@@ -1,1 +1,233 @@
+Imprimir números de 0 a 100
+
+
+public class NumerosDeZeroACem {
+    public static void main(String[] args) {
+        for (int i = 0; i <= 100; i++) {
+            System.out.println(i);
+        }
+    }
+}
+
+
+Verificar números pares e ímpares de 1 a 100
+
+public class ParOuImpar {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i + " é par");
+            } else {
+                System.out.println(i + " é ímpar");
+            }
+        }
+    }
+}
+
+Simulador de tabuada
+
+import java.util.Scanner;
+
+public class Tabuada {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um número para ver sua tabuada: ");
+        int numero = scanner.nextInt();
+        
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(numero + " x " + i + " = " + (numero * i));
+        }
+        scanner.close();
+    }
+}
+
+
+
+Sistema de loja online
+
+
+import java.util.ArrayList;
+
+class Produto {
+    String nome;
+    double preco;
+    int quantidadeEmEstoque;
+
+    Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidade;
+    }
+
+    void comprar(int quantidade) {
+        if (quantidade <= quantidadeEmEstoque) {
+            quantidadeEmEstoque -= quantidade;
+        } else {
+            System.out.println("Estoque insuficiente");
+        }
+    }
+
+    void exibirDetalhes() {
+        System.out.println("Produto: " + nome + ", Preço: R$" + preco + ", Estoque: " + quantidadeEmEstoque);
+    }
+}
+
+class Cliente {
+    String nome;
+    String email;
+    String endereco;
+
+    Cliente(String nome, String email, String endereco) {
+        this.nome = nome;
+        this.email = email;
+        this.endereco = endereco;
+    }
+
+    Pedido fazerPedido(ArrayList<Produto> produtos) {
+        return new Pedido(this, produtos);
+    }
+
+    void exibirDados() {
+        System.out.println("Cliente: " + nome + ", Email: " + email + ", Endereço: " + endereco);
+    }
+}
+
+class Pedido {
+    Cliente cliente;
+    ArrayList<Produto> produtos;
+    double valorTotal;
+
+    Pedido(Cliente cliente, ArrayList<Produto> produtos) {
+        this.cliente = cliente;
+        this.produtos = produtos;
+        this.valorTotal = calcularTotal();
+    }
+
+    double calcularTotal() {
+        double total = 0;
+        for (Produto produto : produtos) {
+            total += produto.preco;
+        }
+        return total;
+    }
+
+    void exibirPedido() {
+        System.out.println("Pedido de " + cliente.nome + ":");
+        for (Produto produto : produtos) {
+            System.out.println("- " + produto.nome + ": R$" + produto.preco);
+        }
+        System.out.println("Total: R$" + valorTotal);
+    }
+}
+
+
+
+ Hierarquia de Pessoas
+
+
+
+abstract class Pessoa {
+    String nome;
+    int idade;
+    String cpf;
+    String endereco;
+
+    Pessoa(String nome, int idade, String cpf, String endereco) {
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
+}
+
+class Aluno extends Pessoa {
+    String matricula;
+    String curso;
+
+    Aluno(String nome, int idade, String cpf, String endereco, String matricula, String curso) {
+        super(nome, idade, cpf, endereco);
+        this.matricula = matricula;
+        this.curso = curso;
+    }
+}
+
+class Professor extends Pessoa {
+    double salario;
+    String disciplina;
+    String areaAtuacao;
+
+    Professor(String nome, int idade, String cpf, String endereco, double salario, String disciplina, String areaAtuacao) {
+        super(nome, idade, cpf, endereco);
+        this.salario = salario;
+        this.disciplina = disciplina;
+        this.areaAtuacao = areaAtuacao;
+    }
+}
+
+
+Hierarquia de Contas Bancárias
+
+
+abstract class ContaBancaria {
+    String numeroConta;
+    String titular;
+    double saldo;
+
+    ContaBancaria(String numeroConta, String titular, double saldoInicial) {
+        this.numeroConta = numeroConta;
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    abstract void depositar(double valor);
+    abstract void sacar(double valor);
+}
+
+class ContaPoupanca extends ContaBancaria {
+    double taxaJuros;
+
+    ContaPoupanca(String numeroConta, String titular, double saldoInicial, double taxaJuros) {
+        super(numeroConta, titular, saldoInicial);
+        this.taxaJuros = taxaJuros;
+    }
+
+    void depositar(double valor) {
+        saldo += valor;
+    }
+
+    void sacar(double valor) {
+        if (valor <= saldo) {
+            saldo -= valor;
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
+    }
+
+    void aplicarJuros() {
+        saldo += saldo * taxaJuros;
+    }
+}
+
+class ContaCorrente extends ContaBancaria {
+    double limiteChequeEspecial;
+
+    ContaCorrente(String numeroConta, String titular, double saldoInicial, double limiteChequeEspecial) {
+        super(numeroConta, titular, saldoInicial);
+        this.limiteChequeEspecial = limiteChequeEspecial;
+    }
+
+    void depositar(double valor) {
+        saldo += valor;
+    }
+
+    void sacar(double valor) {
+        if (valor <= saldo + limiteChequeEspecial) {
+            saldo -= valor;
+        } else {
+            System.out.println("Saldo insuficiente, mesmo com cheque especial");
+        }
+    }
+}
+
+
 
