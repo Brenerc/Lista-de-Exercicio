@@ -32,6 +32,6 @@ Tecnologias Java 8+
 
 ![image](https://github.com/user-attachments/assets/fb36072a-ed44-4166-92d5-4b5083ed8ac6)
 
+![image](https://github.com/user-attachments/assets/6970267d-3434-47df-b5ad-2d70c259ce4b)
 
-![image](https://github.com/user-attachments/assets/9ad4cb67-2bb9-4fd4-a758-68e2e95e5f80)
 
