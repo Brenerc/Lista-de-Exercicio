@@ -1,1 +1,374 @@
+Sistema de Gerenciamento de Notas de Alunos
+
+
+public class Aluno {
+    private String nome;
+    private double[] notas;
+
+    public Aluno(String nome) {
+        this.nome = nome;
+        this.notas = new double[0];
+    }
+
+    public void adicionarNota(double nota) {
+        double[] novasNotas = new double[notas.length + 1];
+        System.arraycopy(notas, 0, novasNotas, 0, notas.length);
+        novasNotas[notas.length] = nota;
+        notas = novasNotas;
+    }
+
+    public double calcularMedia() {
+        if (notas.length == 0) return 0;
+        double soma = 0;
+        for (double nota : notas) {
+            soma += nota;
+        }
+        return soma / notas.length;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+
+
+Sistema de Controle de Estoque
+
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public void adicionarEstoque(int quantidade) {
+        this.quantidade += quantidade;
+    }
+
+    public void removerEstoque(int quantidade) {
+        if (this.quantidade >= quantidade) {
+            this.quantidade -= quantidade;
+        }
+    }
+
+    public void exibirEstoque() {
+        System.out.println("Produto: " + nome);
+        System.out.println("Preço: " + preco);
+        System.out.println("Quantidade em estoque: " + quantidade);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+Sistema de Registro de Pedidos
+
+
+import java.util.ArrayList;
+
+public class Pedido {
+    private ArrayList<Produto> produtos;
+
+    public Pedido() {
+        produtos = new ArrayList<>();
+    }
+
+    public void adicionarProduto(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (Produto produto : produtos) {
+            total += produto.getPreco();
+        }
+        return total;
+    }
+}
+
+
+Sistema de Organização de Biblioteca
+
+
+import java.util.ArrayList;
+
+public class Livro {
+    private String titulo;
+    private String autor;
+    private String isbn;
+
+    public Livro(String titulo, String autor, String isbn) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.isbn = isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+}
+
+public class Biblioteca {
+    private ArrayList<Livro> livros;
+
+    public Biblioteca() {
+        livros = new ArrayList<>();
+    }
+
+    public void adicionarLivro(Livro livro) {
+        livros.add(livro);
+    }
+
+    public Livro buscarPorTitulo(String titulo) {
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                return livro;
+            }
+        }
+        return null;
+    }
+}
+
+
+Sistema de Conta Bancária
+
+
+import java.util.ArrayList;
+
+public class ContaBancaria {
+    private double saldo;
+    private ArrayList<String> historico;
+
+    public ContaBancaria() {
+        saldo = 0;
+        historico = new ArrayList<>();
+    }
+
+    public void depositar(double valor) {
+        saldo += valor;
+        historico.add("Depósito: +" + valor);
+    }
+
+    public void sacar(double valor) {
+        if (saldo >= valor) {
+            saldo -= valor;
+            historico.add("Saque: -" + valor);
+        }
+    }
+
+    public void exibirExtrato() {
+        System.out.println("Extrato da conta:");
+        for (String transacao : historico) {
+            System.out.println(transacao);
+        }
+        System.out.println("Saldo atual: " + saldo);
+    }
+}
+
+
+ Sistema de Gerenciamento de Funcionários
+
+
+
+import java.util.ArrayList;
+
+public class Funcionario {
+    private String nome;
+    private String cargo;
+    private double salario;
+
+    public Funcionario(String nome, String cargo, double salario) {
+        this.nome = nome;
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+
+    public void reajustarSalario(double percentual) {
+        salario *= (1 + percentual / 100);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Empresa {
+    private ArrayList<Funcionario> funcionarios;
+
+    public Empresa() {
+        funcionarios = new ArrayList<>();
+    }
+
+    public void adicionarFuncionario(Funcionario funcionario) {
+        funcionarios.add(funcionario);
+    }
+
+    public void reajustarSalarios(double percentual) {
+        for (Funcionario funcionario : funcionarios) {
+            funcionario.reajustarSalario(percentual);
+        }
+    }
+}
+
+
+
+Sistema de Campeonato Esportivo
+
+
+import java.util.ArrayList;
+
+public class Time {
+    private String nome;
+    private ArrayList<String> jogadores;
+
+    public Time(String nome) {
+        this.nome = nome;
+        jogadores = new ArrayList<>();
+    }
+
+    public void adicionarJogador(String jogador) {
+        jogadores.add(jogador);
+    }
+
+    public void removerJogador(String jogador) {
+        jogadores.remove(jogador);
+    }
+
+    public void listarJogadores() {
+        System.out.println("Jogadores do time " + nome + ":");
+        for (String jogador : jogadores) {
+            System.out.println(jogador);
+        }
+    }
+}
+
+
+Sistema de Carrinho de Compras
+
+
+import java.util.ArrayList;
+
+public class CarrinhoDeCompras {
+    private ArrayList<Produto> produtos;
+
+    public CarrinhoDeCompras() {
+        produtos = new ArrayList<>();
+    }
+
+    public void adicionarItem(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public void removerItem(Produto produto) {
+        produtos.remove(produto);
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (Produto produto : produtos) {
+            total += produto.getPreco();
+        }
+        return total;
+    }
+}
+
+
+ Sistema de Reservas de Hotel
+
+
+import java.util.ArrayList;
+
+public class Reserva {
+    private String hospede;
+    private int numeroQuarto;
+    private String dataEntrada;
+    private String dataSaida;
+
+    public Reserva(String hospede, int numeroQuarto, String dataEntrada, String dataSaida) {
+        this.hospede = hospede;
+        this.numeroQuarto = numeroQuarto;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+    }
+
+    public int getNumeroQuarto() {
+        return numeroQuarto;
+    }
+}
+
+public class Hotel {
+    private ArrayList<Reserva> reservas;
+
+    public Hotel() {
+        reservas = new ArrayList<>();
+    }
+
+    public void adicionarReserva(Reserva reserva) {
+        reservas.add(reserva);
+    }
+
+    public boolean verificarDisponibilidade(int numeroQuarto, String dataEntrada, String dataSaida) {
+        for (Reserva reserva : reservas) {
+            if (reserva.getNumeroQuarto() == numeroQuarto) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+ Sistema de Registro de Participantes de Evento
+
+
+
+import java.util.ArrayList;
+
+public class Participante {
+    private String nome;
+    private int idade;
+    private String tipoIngresso;
+
+    public Participante(String nome, int idade, String tipoIngresso) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipoIngresso = tipoIngresso;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Evento {
+    private ArrayList<Participante> participantes;
+
+    public Evento() {
+        participantes = new ArrayList<>();
+    }
+
+    public void adicionarParticipante(Participante participante) {
+        participantes.add(participante);
+    }
+
+    public void exibirParticipantes() {
+        System.out.println("Lista de participantes:");
+        for (Participante participante : participantes) {
+            System.out.println("Nome: " + participante.getNome());
+        }
+    }
+}
+
+
+
+
+
+
 
