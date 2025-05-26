@@ -28,6 +28,5 @@ Tarefas para casa
 
 Preparação para provas
 
+Tecnologias Java 8+
 
-
-JAVA8+
