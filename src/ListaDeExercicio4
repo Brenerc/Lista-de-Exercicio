@@ -1,1 +1,849 @@
+Sistema de Produtos Eletrônicos para TechGadgets
 
+
+class Produto {
+    private String nome;
+    private double preco;
+    private String marca;
+
+    public Produto(String nome, double preco, String marca) {
+        this.nome = nome;
+        this.preco = preco;
+        this.marca = marca;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Produto: " + nome + ", Marca: " + marca + ", Preço: R$" + preco);
+    }
+}
+
+class Smartphone extends Produto {
+    private String sistemaOperacional;
+
+    public Smartphone(String nome, double preco, String marca, String sistemaOperacional) {
+        super(nome, preco, marca);
+        this.sistemaOperacional = sistemaOperacional;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Smartphone, SO: " + sistemaOperacional);
+    }
+}
+
+class Notebook extends Produto {
+    private int memoriaRAM;
+
+    public Notebook(String nome, double preco, String marca, int memoriaRAM) {
+        super(nome, preco, marca);
+        this.memoriaRAM = memoriaRAM;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Notebook, RAM: " + memoriaRAM + "GB");
+    }
+}
+
+class Smartwatch extends Produto {
+    private boolean monitoramentoCardiaco;
+
+    public Smartwatch(String nome, double preco, String marca, boolean monitoramentoCardiaco) {
+        super(nome, preco, marca);
+        this.monitoramentoCardiaco = monitoramentoCardiaco;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Smartwatch, Monitor Cardíaco: " + (monitoramentoCardiaco ? "Sim" : "Não"));
+    }
+}
+
+class TechGadgets {
+    public static void main(String[] args) {
+        Produto[] produtos = {
+            new Smartphone("Galaxy S23", 4500, "Samsung", "Android"),
+            new Notebook("Inspiron 15", 3200, "Dell", 16),
+            new Smartwatch("Watch Series 8", 2800, "Apple", true)
+        };
+
+        for (Produto produto : produtos) {
+            produto.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
+
+
+
+Sistema de Gerenciamento de Animais para PetShopFeliz
+java
+
+
+
+
+class Animal {
+    private String nome;
+    private int idade;
+    private String raca;
+
+    public Animal(String nome, int idade, String raca) {
+        this.nome = nome;
+        this.idade = idade;
+        this.raca = raca;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void realizarServico() {
+        System.out.println("Realizando serviço genérico para " + nome);
+    }
+}
+
+class Cachorro extends Animal {
+    private boolean precisaTosa;
+
+    public Cachorro(String nome, int idade, String raca, boolean precisaTosa) {
+        super(nome, idade, raca);
+        this.precisaTosa = precisaTosa;
+    }
+
+    @Override
+    public void realizarServico() {
+        System.out.println("Banho e " + (precisaTosa ? "tosa" : "escovação") + " para " + getNome());
+    }
+}
+
+class Gato extends Animal {
+    private boolean ehArisco;
+
+    public Gato(String nome, int idade, String raca, boolean ehArisco) {
+        super(nome, idade, raca);
+        this.ehArisco = ehArisco;
+    }
+
+    @Override
+    public void realizarServico() {
+        System.out.println("Serviço especial para gato " + (ehArisco ? "arisco" : "manso") + ": " + getNome());
+    }
+}
+
+class Passaro extends Animal {
+    private boolean cortarAsas;
+
+    public Passaro(String nome, int idade, String raca, boolean cortarAsas) {
+        super(nome, idade, raca);
+        this.cortarAsas = cortarAsas;
+    }
+
+    @Override
+    public void realizarServico() {
+        System.out.println("Serviço para pássaro " + getNome() + ": " + (cortarAsas ? "Corte de asas" : "Apenas banho"));
+    }
+}
+
+class PetShopFeliz {
+    public static void main(String[] args) {
+        Animal[] animais = {
+            new Cachorro("Rex", 3, "Labrador", true),
+            new Gato("Mimi", 2, "Siamês", false),
+            new Passaro("Piu", 1, "Canário", true)
+        };
+
+        for (Animal animal : animais) {
+            animal.realizarServico();
+        }
+    }
+}
+
+
+
+
+ Sistema de Matrículas para Escola Futuro Brilhante
+
+
+class Curso {
+    private String nome;
+    private int duracaoMeses;
+    protected double valorMensalidade;
+
+    public Curso(String nome, int duracaoMeses, double valorMensalidade) {
+        this.nome = nome;
+        this.duracaoMeses = duracaoMeses;
+        this.valorMensalidade = valorMensalidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double calcularValorTotal() {
+        return valorMensalidade * duracaoMeses;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Curso: " + nome + ", Duração: " + duracaoMeses + " meses");
+    }
+}
+
+class CursoRegular extends Curso {
+    public CursoRegular(String nome, int duracaoMeses, double valorMensalidade) {
+        super(nome, duracaoMeses, valorMensalidade);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Regular, Valor Total: R$" + calcularValorTotal());
+    }
+}
+
+class CursoTecnico extends Curso {
+    private boolean temEstagio;
+
+    public CursoTecnico(String nome, int duracaoMeses, double valorMensalidade, boolean temEstagio) {
+        super(nome, duracaoMeses, valorMensalidade);
+        this.temEstagio = temEstagio;
+    }
+
+    @Override
+    public double calcularValorTotal() {
+        return super.calcularValorTotal() * 0.9;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Técnico, Estágio: " + (temEstagio ? "Sim" : "Não") + ", Valor com desconto: R$" + calcularValorTotal());
+    }
+}
+
+class CursoProfissionalizante extends Curso {
+    private String certificacao;
+
+    public CursoProfissionalizante(String nome, int duracaoMeses, double valorMensalidade, String certificacao) {
+        super(nome, duracaoMeses, valorMensalidade);
+        this.certificacao = certificacao;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Profissionalizante, Certificação: " + certificacao + ", Valor Total: R$" + (calcularValorTotal() + 500));
+    }
+}
+
+class Escola {
+    public static void main(String[] args) {
+        Curso[] cursos = {
+            new CursoRegular("Matemática Básica", 6, 200),
+            new CursoTecnico("Informática", 12, 300, true),
+            new CursoProfissionalizante("Design Gráfico", 8, 400, "Adobe Certified")
+        };
+
+        for (Curso curso : cursos) {
+            curso.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
+
+
+ Sistema de Agendamento de Consultas para Clínica Saúde Total
+
+
+class Paciente {
+    private String nome;
+    private String cpf;
+    protected String tipo;
+
+    public Paciente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.tipo = "Comum";
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void agendarConsulta(String data) {
+        System.out.println("Consulta agendada para " + nome + " em " + data);
+    }
+}
+
+class PacienteVIP extends Paciente {
+    public PacienteVIP(String nome, String cpf) {
+        super(nome, cpf);
+        this.tipo = "VIP";
+    }
+
+    @Override
+    public void agendarConsulta(String data) {
+        super.agendarConsulta(data);
+        System.out.println("Prioridade máxima - Sala VIP disponível");
+    }
+}
+
+class PacienteConvenio extends Paciente {
+    private String nomeConvenio;
+
+    public PacienteConvenio(String nome, String cpf, String nomeConvenio) {
+        super(nome, cpf);
+        this.nomeConvenio = nomeConvenio;
+        this.tipo = "Convênio";
+    }
+
+    @Override
+    public void agendarConsulta(String data) {
+        System.out.println("Consulta via convênio " + nomeConvenio + " agendada para " + getNome() + " em " + data);
+    }
+}
+
+class Clinica {
+    public static void main(String[] args) {
+        Paciente[] pacientes = {
+            new Paciente("João Silva", "123.456.789-00"),
+            new PacienteVIP("Maria Santos", "987.654.321-00"),
+            new PacienteConvenio("Carlos Oliveira", "456.123.789-00", "Bradesco Saúde")
+        };
+
+        for (Paciente paciente : pacientes) {
+            System.out.println("Paciente: " + paciente.getNome() + " - Tipo: " + paciente.tipo);
+            paciente.agendarConsulta("15/06/2023");
+            System.out.println();
+        }
+    }
+}
+
+ Sistema de Aluguel de Carros para Locadora SpeedFast
+
+
+class Veiculo {
+    private String modelo;
+    private String placa;
+    protected double valorDiaria;
+
+    public Veiculo(String modelo, String placa, double valorDiaria) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.valorDiaria = valorDiaria;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public double calcularAluguel(int dias) {
+        return valorDiaria * dias;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Modelo: " + modelo + ", Placa: " + placa);
+    }
+}
+
+class CarroEconomico extends Veiculo {
+    public CarroEconomico(String modelo, String placa) {
+        super(modelo, placa, 100);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Categoria: Econômico");
+    }
+}
+
+class SUV extends Veiculo {
+    private boolean tracao4x4;
+
+    public SUV(String modelo, String placa, boolean tracao4x4) {
+        super(modelo, placa, 250);
+        this.tracao4x4 = tracao4x4;
+    }
+
+    @Override
+    public double calcularAluguel(int dias) {
+        return super.calcularAluguel(dias) * (tracao4x4 ? 1.2 : 1.0);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Categoria: SUV, Tração 4x4: " + (tracao4x4 ? "Sim" : "Não"));
+    }
+}
+
+class VeiculoPremium extends Veiculo {
+    private boolean seguroCompleto;
+
+    public VeiculoPremium(String modelo, String placa, boolean seguroCompleto) {
+        super(modelo, placa, 400);
+        this.seguroCompleto = seguroCompleto;
+    }
+
+    @Override
+    public double calcularAluguel(int dias) {
+        return super.calcularAluguel(dias) + (seguroCompleto ? 50 * dias : 0);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Categoria: Premium, Seguro Completo: " + (seguroCompleto ? "Sim" : "Não"));
+    }
+}
+
+class Locadora {
+    public static void main(String[] args) {
+        Veiculo[] veiculos = {
+            new CarroEconomico("Onix", "ABC-1234"),
+            new SUV("Jeep Compass", "DEF-5678", true),
+            new VeiculoPremium("BMW X5", "GHI-9012", true)
+        };
+
+        for (Veiculo veiculo : veiculos) {
+            veiculo.mostrarDetalhes();
+            System.out.println("Aluguel 5 dias: R$" + veiculo.calcularAluguel(5));
+            System.out.println();
+        }
+    }
+}
+
+
+ Sistema de Gerenciamento de Livros para Livraria Conhecimento Digital
+java
+
+
+
+
+class Livro {
+    private String titulo;
+    private String autor;
+    private double preco;
+
+    public Livro(String titulo, String autor, double preco) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.preco = preco;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Livro: " + titulo + ", Autor: " + autor + ", Preço: R$" + preco);
+    }
+}
+
+class LivroFisico extends Livro {
+    private int pesoGramas;
+
+    public LivroFisico(String titulo, String autor, double preco, int pesoGramas) {
+        super(titulo, autor, preco);
+        this.pesoGramas = pesoGramas;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Físico, Peso: " + pesoGramas + "g");
+    }
+}
+
+class Ebook extends Livro {
+    private String formato;
+
+    public Ebook(String titulo, String autor, double preco, String formato) {
+        super(titulo, autor, preco * 0.8);
+        this.formato = formato;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: E-book, Formato: " + formato + ", Recursos digitais disponíveis");
+    }
+}
+
+class Audiobook extends Livro {
+    private int duracaoMinutos;
+
+    public Audiobook(String titulo, String autor, double preco, int duracaoMinutos) {
+        super(titulo, autor, preco * 1.2);
+        this.duracaoMinutos = duracaoMinutos;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Audiobook, Duração: " + duracaoMinutos + " minutos");
+    }
+}
+
+class Livraria {
+    public static void main(String[] args) {
+        Livro[] livros = {
+            new LivroFisico("Dom Casmurro", "Machado de Assis", 45.90, 350),
+            new Ebook("1984", "George Orwell", 29.90, "PDF"),
+            new Audiobook("A Arte da Guerra", "Sun Tzu", 39.90, 240)
+        };
+
+        for (Livro livro : livros) {
+            livro.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
+
+
+ Sistema de Planos de Treino para Academia PowerFit
+
+
+
+class PlanoTreino {
+    protected String nome;
+    protected double valorMensal;
+
+    public PlanoTreino(String nome, double valorMensal) {
+        this.nome = nome;
+        this.valorMensal = valorMensal;
+    }
+
+    public void mostrarBeneficios() {
+        System.out.println("Plano: " + nome + ", Valor: R$" + valorMensal);
+    }
+}
+
+class PlanoBasico extends PlanoTreino {
+    public PlanoBasico() {
+        super("Básico", 99.90);
+    }
+
+    @Override
+    public void mostrarBeneficios() {
+        super.mostrarBeneficios();
+        System.out.println("Inclui: Acesso à musculatura e área de cardio");
+    }
+}
+
+class PlanoIntermediario extends PlanoTreino {
+    public PlanoIntermediario() {
+        super("Intermediário", 149.90);
+    }
+
+    @Override
+    public void mostrarBeneficios() {
+        super.mostrarBeneficios();
+        System.out.println("Inclui: Musculação + 3 aulas em grupo por semana");
+    }
+}
+
+class PlanoPremium extends PlanoTreino {
+    public PlanoPremium() {
+        super("Premium", 299.90);
+    }
+
+    @Override
+    public void mostrarBeneficios() {
+        super.mostrarBeneficios();
+        System.out.println("Inclui: Acesso ilimitado + Personal trainer + Nutricionista");
+    }
+}
+
+class Academia {
+    public static void main(String[] args) {
+        PlanoTreino[] planos = {
+            new PlanoBasico(),
+            new PlanoIntermediario(),
+            new PlanoPremium()
+        };
+
+        for (PlanoTreino plano : planos) {
+            plano.mostrarBeneficios();
+            System.out.println();
+        }
+    }
+}
+
+
+Sistema de Reservas para Agência de Viagens MundoAberto
+
+
+class PacoteViagem {
+    protected String destino;
+    protected int duracaoDias;
+    protected double precoBase;
+
+    public PacoteViagem(String destino, int duracaoDias, double precoBase) {
+        this.destino = destino;
+        this.duracaoDias = duracaoDias;
+        this.precoBase = precoBase;
+    }
+
+    public double calcularPreco() {
+        return precoBase;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Destino: " + destino + ", Duração: " + duracaoDias + " dias");
+    }
+}
+
+class PacoteEconomico extends PacoteViagem {
+    public PacoteEconomico(String destino, int duracaoDias) {
+        super(destino, duracaoDias, 1200);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Econômico, Hospedagem: Simples, Preço: R$" + calcularPreco());
+    }
+}
+
+class PacoteTuristico extends PacoteViagem {
+    private int numeroPasseios;
+
+    public PacoteTuristico(String destino, int duracaoDias, int numeroPasseios) {
+        super(destino, duracaoDias, 2000);
+        this.numeroPasseios = numeroPasseios;
+    }
+
+    @Override
+    public double calcularPreco() {
+        return super.calcularPreco() + (numeroPasseios * 150);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Turístico, Passeios Inclusos: " + numeroPasseios + ", Preço: R$" + calcularPreco());
+    }
+}
+
+class PacoteLuxo extends PacoteViagem {
+    public PacoteLuxo(String destino, int duracaoDias) {
+        super(destino, duracaoDias, 5000);
+    }
+
+    @Override
+    public double calcularPreco() {
+        return super.calcularPreco() * 1.1;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Tipo: Luxo, Benefícios: Traslado privativo, Hospedagem 5 estrelas, Preço: R$" + calcularPreco());
+    }
+}
+
+class AgenciaViagens {
+    public static void main(String[] args) {
+        PacoteViagem[] pacotes = {
+            new PacoteEconomico("Florianópolis", 5),
+            new PacoteTuristico("Rio de Janeiro", 7, 3),
+            new PacoteLuxo("Paris", 10)
+        };
+
+        for (PacoteViagem pacote : pacotes) {
+            pacote.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+Sistema de Cardápio Digital para Restaurante Sabor & Arte
+
+class ItemCardapio {
+    protected String nome;
+    protected String descricao;
+    protected double preco;
+
+    public ItemCardapio(String nome, String descricao, double preco) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+    }
+
+    public double calcularPreco() {
+        return preco;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println(nome + " - " + descricao);
+    }
+}
+
+class PratoALaCarte extends ItemCardapio {
+    private String categoria;
+
+    public PratoALaCarte(String nome, String descricao, double preco, String categoria) {
+        super(nome, descricao, preco);
+        this.categoria = categoria;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Categoria: " + categoria + ", Preço: R$" + preco);
+    }
+}
+
+class ComboPromocional extends ItemCardapio {
+    private int numeroItens;
+
+    public ComboPromocional(String nome, String descricao, double preco, int numeroItens) {
+        super(nome, descricao, preco * 0.9);
+        this.numeroItens = numeroItens;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Combo com " + numeroItens + " itens, Preço com desconto: R$" + calcularPreco());
+    }
+}
+
+class MenuDegustacao extends ItemCardapio {
+    private int numeroPratos;
+
+    public MenuDegustacao(String nome, String descricao, double preco, int numeroPratos) {
+        super(nome, descricao, preco);
+        this.numeroPratos = numeroPratos;
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Menu degustação com " + numeroPratos + " pratos selecionados pelo chef, Experiência exclusiva, Preço: R$" + preco);
+    }
+}
+
+class Restaurante {
+    public static void main(String[] args) {
+        ItemCardapio[] cardapio = {
+            new PratoALaCarte("Filé Mignon", "Filé mignon com molho de vinho", 89.90, "Carnes"),
+            new ComboPromocional("Combo Casal", "2 entradas + 2 pratos principais + 1 sobremesa", 120, 3),
+            new MenuDegustacao("Menu Chef", "Seleção de 5 pratos especiais do chef", 199.90, 5)
+        };
+
+        for (ItemCardapio item : cardapio) {
+            item.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
+
+
+
+ Sistema de Assinaturas para Empresa de Streaming CinePlus
+
+
+
+
+class PlanoStreaming {
+    protected String nome;
+    protected double valorMensal;
+    protected int numeroTelas;
+
+    public PlanoStreaming(String nome, double valorMensal, int numeroTelas) {
+        this.nome = nome;
+        this.valorMensal = valorMensal;
+        this.numeroTelas = numeroTelas;
+    }
+
+    public void mostrarDetalhes() {
+        System.out.println("Plano: " + nome + ", Valor: R$" + valorMensal + ", Telas: " + numeroTelas);
+    }
+}
+
+class PlanoBasico extends PlanoStreaming {
+    public PlanoBasico() {
+        super("Básico", 19.90, 1);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Qualidade: HD, Conteúdo: Catálogo padrão");
+    }
+}
+
+class PlanoFamilia extends PlanoStreaming {
+    public PlanoFamilia() {
+        super("Família", 34.90, 4);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Qualidade: Full HD, Perfis individuais, Controle parental");
+    }
+}
+
+class PlanoPremium extends PlanoStreaming {
+    public PlanoPremium() {
+        super("Premium", 49.90, 6);
+    }
+
+    @Override
+    public void mostrarDetalhes() {
+        super.mostrarDetalhes();
+        System.out.println("Qualidade: 4K Ultra HD, Conteúdo exclusivo, Lançamentos antecipados");
+    }
+}
+
+class Streaming {
+    public static void main(String[] args) {
+        PlanoStreaming[] planos = {
+            new PlanoBasico(),
+            new PlanoFamilia(),
+            new PlanoPremium()
+        };
+
+        for (PlanoStreaming plano : planos) {
+            plano.mostrarDetalhes();
+            System.out.println();
+        }
+    }
+}
