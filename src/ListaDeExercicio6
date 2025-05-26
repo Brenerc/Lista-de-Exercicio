@@ -1,1 +1,187 @@
+ Contador de objetos
+
+
+public class Contador {
+    private static int total = 0;
+
+    public Contador() {
+        total++;
+    }
+
+    public static int getTotal() {
+        return total;
+    }
+}
+
+
+ Operações matemáticas
+
+
+public class Matematica {
+    public static double somar(double a, double b) {
+        return a + b;
+    }
+
+    public static double areaCirculo(double raio) {
+        return Math.PI * Math.pow(raio, 2);
+    }
+}
+
+
+ Formas geométricas
+
+
+
+public abstract class FormaGeometrica {
+    public abstract double calcularArea();
+    public abstract double calcularPerimetro();
+}
+
+public class Retangulo extends FormaGeometrica {
+    private double base;
+    private double altura;
+
+    public Retangulo(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    @Override
+    public double calcularArea() {
+        return base * altura;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (base + altura);
+    }
+}
+
+
+
+Livro com categorias fixas
+
+
+public class Livro {
+    public enum Categoria {
+        FICCAO, CIENCIAS, HISTORIA, ROMANCE
+    }
+
+    private String titulo;
+    private Categoria categoria;
+
+    public Livro(String titulo, Categoria categoria) {
+        this.titulo = titulo;
+        this.categoria = categoria;
+    }
+}
+
+
+
+Sistema de autenticação
+
+
+
+public class Autenticacao {
+    private String senhaCorreta;
+
+    public Autenticacao(String senhaCorreta) {
+        this.senhaCorreta = senhaCorreta;
+    }
+
+    public boolean autenticar(String senha) {
+        return senhaCorreta.equals(senha);
+    }
+
+    public void mensagemAutenticacao() {
+        System.out.println("Por favor, autentique-se inserindo sua senha.");
+    }
+}
+
+
+
+
+Animais e sons
+
+
+
+public abstract class Animal {
+    public abstract String emitirSom();
+}
+
+
+
+
+
+Manipulação de text
+
+public class Texto {
+    public static String inverter(String texto) {
+        return new StringBuilder(texto).reverse().toString();
+    }
+
+    public static int contarCaracteres(String texto) {
+        return texto.length();
+    }
+}
+
+
+
+Conexão única com banco de dados
+
+public class DatabaseConnection {
+    private static DatabaseConnection instance;
+
+    private DatabaseConnection() {}
+
+    public static DatabaseConnection getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConnection();
+        }
+        return instance;
+    }
+}
+
+
+
+
+
+public class Cachorro extends Animal {
+    @Override
+    public String emitirSom() {
+        return "Au Au!";
+    }
+}
+
+public class Gato extends Animal {
+    @Override
+    public String emitirSom() {
+        return "Miau!";
+    }
+}
+
+public class Vaca extends Animal {
+    @Override
+    public String emitirSom() {
+        return "Moo!";
+    }
+}
+
+// Uso
+public class Main {
+    public static void main(String[] args) {
+        Animal[] animais = {new Cachorro(), new Gato(), new Vaca()};
+        for (Animal animal : animais) {
+            System.out.println(animal.emitirSom());
+        }
+    }
+}
+
+
+
+
+
+
+
+
 
