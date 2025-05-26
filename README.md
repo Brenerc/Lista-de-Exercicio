@@ -30,8 +30,18 @@ Preparação para provas
 
 Tecnologias Java 8+
 
+AI Chat
+
+IntelliJ
+
+
+
+
 ![image](https://github.com/user-attachments/assets/fb36072a-ed44-4166-92d5-4b5083ed8ac6)
 
 ![image](https://github.com/user-attachments/assets/6970267d-3434-47df-b5ad-2d70c259ce4b)
+
+![image](https://github.com/user-attachments/assets/711d4d4c-03fe-4ee2-87d0-30f6fa7a8363)
+
 
 
